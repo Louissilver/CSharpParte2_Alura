@@ -26,9 +26,27 @@ namespace _01_ByteBank
             Console.WriteLine("Saldo anterior: " + contaDoBruno.saldo);
             bool resultadoSaque = contaDoBruno.Sacar(50);
             Console.WriteLine("Resultado do saque: " + resultadoSaque);
-            Console.WriteLine("Saldo posterior: " + contaDoBruno.saldo);
-            Console.ReadLine();
+            Console.WriteLine("Saldo posterior: " + contaDoBruno.saldo + "\n\n");
 
+            Console.WriteLine("Conta corrente do Bruno com exibição de saldo antes e depois do depósito:");
+            Console.WriteLine("Saldo anterior: " + contaDoBruno.saldo);
+            double valorDeposito = 250;
+            contaDoBruno.Depositar(valorDeposito);
+            Console.WriteLine("Valor de depósito: " + valorDeposito);
+            Console.WriteLine("Saldo posterior: " + contaDoBruno.saldo + "\n\n");
+
+            ContaCorrente contaDaGabriela = new ContaCorrente();
+            double valorTransferencia = 20;
+
+            Console.WriteLine("Saldo inicial da conta da Gabriela: " + contaDaGabriela.saldo);
+            Console.WriteLine("Saldo inicial da conta do Bruno: " + contaDoBruno.saldo);
+            Console.WriteLine("Valor de transferência: " + valorTransferencia);
+            bool resultadoTransferencia = contaDoBruno.Transferir(valorTransferencia, contaDaGabriela);
+            Console.WriteLine("Resultado transferência: " + resultadoTransferencia);
+            Console.WriteLine("Saldo final da conta da Gabriela: " + contaDaGabriela.saldo);
+            Console.WriteLine("Saldo final da conta do Bruno: " + contaDoBruno.saldo);
+
+            Console.ReadLine();
         }
     }
 }
