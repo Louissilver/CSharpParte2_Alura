@@ -1,41 +1,72 @@
 ﻿using System;
 
-namespace _01_ByteBank
+namespace ByteBank
 {
     class Program
     {
         static void Main()
         {
-            ContaCorrente contaCorrente = new ContaCorrente();
-            contaCorrente.titular = "Gabriela";
-            contaCorrente.agencia = 863;
-            contaCorrente.numero = 15;
-            contaCorrente.saldo = 300;
+            Cliente gabriela = new Cliente();
+            gabriela.nome = "Gabriela";
+            gabriela.profissao = "Desenvolvedora C#";
+            gabriela.cpf = "434.562.878-20";
 
-            Console.WriteLine("Conta corrente da Gabriela e valores dos atributos:");
-            Console.WriteLine("Titular: " + contaCorrente.titular);
-            Console.WriteLine("Agência: " + contaCorrente.agencia);
-            Console.WriteLine("Número: " + contaCorrente.numero);
-            Console.WriteLine("Saldo: " + contaCorrente.saldo + "\n\n");
+            Cliente bruno = new Cliente();
+            bruno.nome = "Bruno";
+            bruno.profissao = "Desenvolvedor Front-end";
+            bruno.cpf = "124.592.844-20";
+
+            ContaCorrente contaDaGabriela = new ContaCorrente();
+            contaDaGabriela.titular = gabriela;
+            contaDaGabriela.agencia = 863;
+            contaDaGabriela.numero = 15;
+            contaDaGabriela.saldo = 1000;
 
             ContaCorrente contaDoBruno = new ContaCorrente();
-            contaDoBruno.titular = "Bruno";
+            contaDoBruno.titular = bruno;
+            contaDoBruno.agencia = 863;
+            contaDoBruno.numero = 20;
+            contaDoBruno.saldo = 500;
+
+
+            Console.WriteLine($@"Conta corrente da Gabriela e valores dos atributos:
+            Titular: {contaDaGabriela.titular.nome}
+            Agência: {contaDaGabriela.agencia}
+            Número: {contaDaGabriela.numero}
+            Saldo: {contaDaGabriela.saldo}
+            ");
+
+            Console.WriteLine("*******************************************************************\n\n");
+
+            Console.WriteLine($@"Conta corrente da Gabriela e valores dos atributos:
+            Titular: {contaDoBruno.titular.nome}
+            Agência: {contaDoBruno.agencia}
+            Número: {contaDoBruno.numero}
+            Saldo: {contaDoBruno.saldo}
+            ");
+
+            Console.WriteLine("*******************************************************************\n\n");
+
+            double valorSaque = 50;
 
             Console.WriteLine("Conta corrente do Bruno com exibição de saldo antes e depois do saque:");
-            Console.WriteLine(contaDoBruno.titular);
             Console.WriteLine("Saldo anterior: " + contaDoBruno.saldo);
-            bool resultadoSaque = contaDoBruno.Sacar(50);
+            bool resultadoSaque = contaDoBruno.Sacar(valorSaque);
             Console.WriteLine("Resultado do saque: " + resultadoSaque);
             Console.WriteLine("Saldo posterior: " + contaDoBruno.saldo + "\n\n");
 
+            Console.WriteLine("*******************************************************************\n\n");
+            
+            double valorDeposito = 250;
+
             Console.WriteLine("Conta corrente do Bruno com exibição de saldo antes e depois do depósito:");
             Console.WriteLine("Saldo anterior: " + contaDoBruno.saldo);
-            double valorDeposito = 250;
             contaDoBruno.Depositar(valorDeposito);
             Console.WriteLine("Valor de depósito: " + valorDeposito);
             Console.WriteLine("Saldo posterior: " + contaDoBruno.saldo + "\n\n");
 
-            ContaCorrente contaDaGabriela = new ContaCorrente();
+            Console.WriteLine("*******************************************************************\n\n");
+
             double valorTransferencia = 20;
 
             Console.WriteLine("Saldo inicial da conta da Gabriela: " + contaDaGabriela.saldo);
