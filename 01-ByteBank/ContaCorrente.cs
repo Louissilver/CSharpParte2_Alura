@@ -1,14 +1,33 @@
 ﻿using ByteBank;
+using System;
 
 namespace ByteBank
 {
 
     public class ContaCorrente
     {
-        public Cliente titular;
-        public int agencia;
-        public int numero;
-        public double saldo = 100;
+        public Cliente Titular { get; set; }
+        public int Agencia { get; set; }
+        public int Numero { get; set; }
+        private double _saldo = 100;
+
+        public double Saldo
+        {
+            get
+            {
+                return _saldo;
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    return;
+                }
+                this._saldo = value;
+            }
+        }
+
+
 
         /// <summary>Método para realizar saque na conta.
         /// Métodos, por convenção, sempre são escritos no infinitivo e iniciam com letra maiúscula
@@ -17,9 +36,9 @@ namespace ByteBank
         public bool Sacar(double valor)
         {
             bool ehPossivelSacar = true;
-            if (this.saldo > valor)
+            if (this._saldo > valor)
             {
-                this.saldo -= valor;
+                this._saldo -= valor;
                 ehPossivelSacar = true;
             }
             return ehPossivelSacar;
@@ -30,7 +49,7 @@ namespace ByteBank
         /// </summary>
         public void Depositar(double valor)
         {
-            this.saldo += valor;
+            this._saldo += valor;
         }
 
         /// <summary>Método para transferência de valores por contas.
@@ -39,10 +58,10 @@ namespace ByteBank
         public bool Transferir(double valor, ContaCorrente contaDestino)
         {
             bool resultadoTransferencia = false;
-            if (this.saldo > valor)
+            if (this._saldo > valor)
             {
                 resultadoTransferencia = true;
-                this.saldo -= valor;
+                this._saldo -= valor;
                 contaDestino.Depositar(valor);
             }
             return resultadoTransferencia;
