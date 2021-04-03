@@ -16,16 +16,12 @@ namespace ByteBank
             bruno.Profissao = "Desenvolvedor Front-end";
             bruno.Cpf = "124.592.844-20";
 
-            ContaCorrente contaDaGabriela = new ContaCorrente();
+            ContaCorrente contaDaGabriela = new ContaCorrente(863, 15);
             contaDaGabriela.Titular = gabriela;
-            contaDaGabriela.Agencia = 863;
-            contaDaGabriela.Numero = 15;
             contaDaGabriela.Saldo = 1000;
 
-            ContaCorrente contaDoBruno = new ContaCorrente();
+            ContaCorrente contaDoBruno = new ContaCorrente(863, 16);
             contaDoBruno.Titular = bruno;
-            contaDoBruno.Agencia = 863;
-            contaDoBruno.Numero = 20;
             contaDoBruno.Saldo = 500;
 
 
@@ -77,6 +73,9 @@ namespace ByteBank
             Console.WriteLine("Saldo final da conta da Gabriela: " + contaDaGabriela.Saldo);
             Console.WriteLine("Saldo final da conta do Bruno: " + contaDoBruno.Saldo);
 
+            Console.WriteLine("*******************************************************************\n\n");
+
+            Console.WriteLine("Total de contas criadas: " + ContaCorrente.TotalDeContasCriadas);
             Console.ReadLine();
         }
     }
