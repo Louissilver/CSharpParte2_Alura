@@ -1,16 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace _01_ByteBank
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            new ContaCorrente();
+            ContaCorrente contaCorrente = new ContaCorrente();
+            contaCorrente.titular = "Gabriela";
+            contaCorrente.agencia = 863;
+            contaCorrente.numero = 15;
+            contaCorrente.saldo = 537.76;
+
+            Console.WriteLine(contaCorrente.titular);
+            Console.WriteLine(contaCorrente.agencia);
+            Console.WriteLine(contaCorrente.numero);
+            Console.WriteLine(contaCorrente.saldo);
+
+            Console.ReadLine();
         }
     }
 }
